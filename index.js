@@ -37,7 +37,7 @@ const HYFMembersApiEndpoint = `https://api.github.com/orgs/${GitHubORG}/members`
 let $repoList = '.repo-list ul'
 let $memberList = '.member-list ul'
 
-fetchJSON(HYFReposApiEndpoint, 'GET')
+fetchJSON(HYFReposApiEndpoint)
   .then(obj => getHtmlRepoList(obj))
   .then(html => renderList($repoList, html))
   .catch(() => renderList($repoList,'<li>Error</li>'))
