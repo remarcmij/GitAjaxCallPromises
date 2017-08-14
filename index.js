@@ -1,12 +1,12 @@
-// function getJSON(url, method) {
-//   return new Promise((resolve, reject) => {
-//     const xhr = new XMLHttpRequest();
-//     xhr.addEventListener("load", () => resolve(xhr.responseText));
-//     xhr.addEventListener("error", () => reject(xhr.statusText));
-//     xhr.open(method, url);
-//     xhr.send();
-//   }).then(res => JSON.parse(res))
-// }
+function getJSON(url, method) {
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    xhr.addEventListener("load", () => resolve(xhr.responseText));
+    xhr.addEventListener("error", () => reject(xhr.statusText));
+    xhr.open(method, url);
+    xhr.send();
+  }).then(res => JSON.parse(res))
+}
 
 const fetchJSON = url => fetch(url).then(res => res.json())
 
@@ -40,9 +40,9 @@ let $memberList = '.member-list ul'
 fetchJSON(HYFReposApiEndpoint, 'GET')
   .then(obj => getHtmlRepoList(obj))
   .then(html => renderList($repoList, html))
-  .catch(() => renderList($repoList)('<li>Error</li>'))
+  .catch(() => renderList($repoList,'<li>Error</li>'))
 
 fetchJSON(HYFMembersApiEndpoint)
   .then(getHtmlMemberList)
   .then(renderList2($memberList))
-  .catch(() => renderList($memberList)('<li>Error</li>'))
+  .catch(() => renderList2($memberList)('<li>Error</li>'))
