@@ -38,7 +38,7 @@ let $repoList = '.repo-list ul'
 let $memberList = '.member-list ul'
 
 fetchJSON(HYFReposApiEndpoint)
-  .then(obj => getHtmlRepoList(obj))
+  .then(res => getHtmlRepoList(res))
   .then(html => renderList($repoList, html))
   .catch(() => renderList($repoList,'<li>Error</li>'))
 
